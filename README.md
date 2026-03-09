@@ -29,6 +29,56 @@ The software performs the following key functions to support security operations
 6. **Contingency Planning** (High Priority - Risk Mitigation): Develops protocols for officer down scenarios, including equipment allocation and plan adjustments. Evaluation: Builds resilience against unforeseen events.
 7. **Logistics Optimization** (Medium Priority - Supply Chain): Tracks consumables, personnel rotation, and supply chains for operational support. Evaluation: Ensures sustained operations at strategic and tactical levels.
 
+## Behavior Tree Execution Cycle
+
+The software operates on a time-based simulation loop where behavior trees drive agent decision-making and actions at regular intervals, creating a dynamic execution cycle that models security operations over time.
+
+### Execution Timeline
+
+1. **Timestep Definition**: System operates in discrete timesteps (configurable: 1 second, 5 seconds, 1 minute, etc.) or real-time continuous evaluation, allowing flexible simulation speeds for different operational scenarios.
+
+2. **Per-Agent Cycle** (executes every timestep):
+   - Read current state (environment conditions, inventory levels, threat detection, ally positions)
+   - Evaluate behavior tree conditions and selectors
+   - Select appropriate action node based on current context
+   - Execute action and update agent state (position, resources, status)
+   - Log action for analysis and incident probability calculation
+
+3. **Per-Team Aggregation** (executes every N timesteps):
+   - Aggregate individual agent actions into coordinated team behaviors
+   - Resolve potential conflicts between agents (e.g., overlapping patrol routes)
+   - Update team status, resource consumption, and equipment availability
+   - Recalculate incident probability based on team dynamics
+
+4. **Per-Operational Level Sync** (executes every M timesteps):
+   - Tactical reports feed into operative level assessment
+   - Operative adjustments trigger tactical redeployment
+   - Strategic updates drive resource reallocations and policy changes
+
+### Integration with Operational Cycles
+
+- **Tactical Level**: Synchronized with rapid timesteps (real-time or near-real-time execution for immediate responses)
+- **Operative Level**: Synchronized with medium intervals (every 5-10 minutes simulated for coordination)
+- **Strategic Level**: Synchronized with long intervals (every hour/day simulated for planning)
+
+### Agent Action Types Driven by Behavior Tree
+
+- **Patrol**: Systematic movement through assigned sectors with threat scanning
+- **Respond**: React to threat/incident detection with appropriate escalation
+- **Take Cover**: Seek protective positions during active threats
+- **Engage**: Initiate active response protocols (containment, neutralization)
+- **Retreat**: Tactical withdrawal with minimal exposure
+- **CASEVAC**: Coordinate casualty evacuation via optimal routes
+- **Communicate**: Radio updates to command with status reports
+- **Resource Management**: Monitor and report ammunition/fuel consumption
+
+### State Persistence and Learning
+
+- Each timestep updates agent state (fatigue levels, ammunition counts, position coordinates, health status)
+- Historical action data informs future behavior tree decisions and probability calculations
+- Incident probability dynamically recalculated based on action outcomes and environmental changes
+- System learns from past incidents to optimize future behavior tree configurations
+
 ## Cycles (Operational Cycles)
 
 This section outlines the operational cycles in execution order, explaining how the software processes data to provide insights for security operations. The cycles are structured hierarchically from strategic planning to tactical execution, ensuring comprehensive coverage of security needs.
