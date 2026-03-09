@@ -8,6 +8,63 @@ Analyze the frequencies of variable changes over time to understand security phe
 
 This software provides spatial topography analysis and infrastructure displacement evaluation to optimize security deployments. It analyzes equipment and information with multiple variables to study unit compositions. The system organizes units into tactical teams by level and calculates incident probabilities to develop effective Officer Down (contingency) protocols. For example, if teams in the perimeter need to take cover but receive a casualty, the intervention may require specific equipment, which could be marked as unavailable and alter future plans.
 
+## Getting Started
+
+### Prerequisites
+
+- Python 3.8 or higher
+- pip package manager
+- Virtual environment tool (venv, virtualenv, or conda)
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-url>
+   cd state-security-analyzer
+   ```
+
+2. **Create and activate virtual environment:**
+   ```bash
+   # Using venv
+   python -m venv .venv
+   # Windows
+   .venv\Scripts\activate
+   # macOS/Linux
+   source .venv/bin/activate
+
+   # Or using conda
+   conda create -n state-security-analyzer python=3.10
+   conda activate state-security-analyzer
+   ```
+
+3. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Set up the database:**
+   ```bash
+   python manage.py migrate
+   ```
+
+5. **Run the development server:**
+   ```bash
+   python manage.py runserver
+   ```
+
+   The application will be available at `http://127.0.0.1:8000/`
+
+For detailed installation instructions, see [docs/installation.md](docs/installation.md).
+
+## Documentation
+
+- **[Full Documentation](docs/)**: Complete project documentation
+- **[User Guide](docs/user-guide.md)**: How to use the application
+- **[API Reference](docs/api.md)**: REST API documentation
+- **[Developer Guide](docs/developer-guide.md)**: Contributing and development
+- **[Project Structure](docs/structure.md)**: Codebase architecture
+
 ## Key Features
 
 - **Behavior Tree Simulation**: Models decision-making processes to assess intellectual and physical capacities of security agents through statistical analysis of mutable and immutable behaviors.
