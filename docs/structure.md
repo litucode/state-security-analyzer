@@ -152,3 +152,94 @@ Optional Docker setup for consistent deployment.
 - Tests in `tests/` ensure integration across layers.
 
 This structure ensures maintainability, testability, and scalability while supporting both research-oriented simulation development and production web deployment.
+
+## Scaffolding
+
+``` plaintext
+state-security-analyzer/
+├── .gitignore                    # Ignore venv, __pycache__, logs, etc.
+├── LICENSE                       # Legal
+├── README.md                     # Setup/installation instructions, description of the software
+├── requirements.txt              # Python dependencies (Django, numpy, shapely for geometry, networkx for graphs, etc.)
+├── manage.py                     # Django management script
+├── core/                         # Non-Django simulation engine (reusable library/CLI)
+│   ├── __init__.py
+│   ├── behavior_trees/           # Behavior tree implementation
+│   │   ├── __init__.py
+│   │   ├── nodes.py              # Action/condition nodes (patrol, engage, etc.)
+│   │   ├── tree.py               # Tree execution logic
+│   │   └── evaluators.py         # Decision-making evaluators
+│   ├── spatial/                  # Geometry and topography analysis
+│   │   ├── __init__.py
+│   │   ├── geometry.py           # Ballistic calculations, perimeter measurements
+│   │   ├── topography.py         # Terrain analysis, heliport optimization
+│   │   └── routes.py             # Route finding, evacuation paths
+│   ├── simulation/               # Core simulation loop
+│   │   ├── __init__.py
+│   │   ├── engine.py             # Time-based execution cycle
+│   │   ├── agents.py             # Agent models (state, actions)
+│   │   ├── teams.py              # Team aggregation and coordination
+│   │   └── cycles.py             # Strategic/operative/tactical cycles
+│   ├── logistics/                # Resource tracking
+│   │   ├── __init__.py
+│   │   ├── inventory.py          # Ammo, equipment tracking
+│   │   ├── reporting.py          # Usage reports
+│   │   └── optimization.py       # Supply chain optimization
+│   ├── analysis/                 # Probability and risk calculations
+│   │   ├── __init__.py
+│   │   ├── probabilities.py      # Incident probability models
+│   │   ├── contingencies.py      # Officer down protocols
+│   │   └── statistics.py         # Statistical analysis of behaviors
+│   └── utils/                    # Shared utilities
+│       ├── __init__.py
+│       ├── config.py             # Simulation parameters
+│       └── logging.py            # Custom logging for actions/states
+├── state_security_analyzer/      # Django project settings
+│   ├── __init__.py
+│   ├── settings.py               # Django settings (DB, apps, etc.)
+│   ├── urls.py                   # Main URL routing
+│   ├── wsgi.py                   # WSGI config
+│   └── asgi.py                   # ASGI config (for async simulations if needed)
+├── apps/                         # Django apps
+│   ├── scenarios/                # Manage simulation scenarios
+│   │   ├── __init__.py
+│   │   ├── models.py             # Scenario, Agent, Team models
+│   │   ├── views.py              # Views for creating/running scenarios
+│   │   ├── forms.py              # Forms for inputting parameters
+│   │   ├── templates/            # HTML templates
+│   │   ├── static/               # CSS/JS for maps/charts
+│   │   └── tests.py              # Unit tests
+│   ├── analysis/                 # Web interface for results
+│   │   ├── __init__.py
+│   │   ├── models.py             # Result, Log models
+│   │   ├── views.py              # Views for reports/visualizations
+│   │   ├── templates/
+│   │   ├── static/               # Charts (e.g., using Chart.js or Plotly)
+│   │   └── tests.py
+│   ├── api/                      # REST API for integrations
+│   │   ├── __init__.py
+│   │   ├── serializers.py        # DRF serializers
+│   │   ├── views.py              # API endpoints
+│   │   ├── urls.py
+│   │   └── tests.py
+│   └── dashboard/                # Admin dashboard
+│       ├── __init__.py
+│       ├── views.py              # Custom admin views
+│       ├── templates/
+│       └── tests.py
+├── scripts/                      # Utility scripts
+│   ├── run_simulation.py         # CLI script to run simulations
+│   └── import_data.py            # Script for bulk data import
+├── tests/                        # Global tests
+│   ├── __init__.py
+│   ├── test_simulation.py        # Integration tests for core engine
+│   └── test_api.py               # API tests
+├── docs/                         # Documentation
+│   ├── index.md                  # Overview
+│   ├── api.md                    # API docs
+│   ├── simulation_guide.md       # How to use the simulation
+│   └── deployment.md             # Deployment instructions
+└── docker/                       # Optional Docker setup
+    ├── Dockerfile
+    └── docker-compose.yml        # For DB, web server
+```
