@@ -19,12 +19,14 @@ This software provides spatial topography analysis and infrastructure displaceme
 ### Installation
 
 1. **Clone the repository:**
+
    ```bash
    git clone <repository-url>
    cd state-security-analyzer
    ```
 
 2. **Create and activate virtual environment:**
+
    ```bash
    # Using venv
    python -m venv .venv
@@ -39,16 +41,19 @@ This software provides spatial topography analysis and infrastructure displaceme
    ```
 
 3. **Install dependencies:**
+
    ```bash
    pip install -r requirements.txt
    ```
 
 4. **Set up the database:**
+
    ```bash
    python manage.py migrate
    ```
 
 5. **Run the development server:**
+
    ```bash
    python manage.py runserver
    ```
@@ -168,12 +173,12 @@ Manages real-time field execution and unit maneuvering.
 
 The software categorizes assets into the following classes and subclasses for comprehensive analysis:
 
-- **Environment**
+- **Environment** – see [Structures](docs/classes/structures.md)
   - Space
   - Structures
   - Infrastructure
 
-- **Vehicles**
+- **Vehicles** – see [Vehicles](docs/classes/vehicles.md)
   - **Ground**
     - Standard Patrol
     - Special Response Units (SRU)
@@ -181,42 +186,32 @@ The software categorizes assets into the following classes and subclasses for co
     - Rotary-wing (Helicopters)
     - UAVs (Drones)
 
-- **Personal Equipment**
+- **Personal Equipment** – general items; refer to [security-force-member](docs/classes/security-force-member.md) for role‑based examples
   - Comms (Radio)
   - Bodycams
   - Weaponry
   - Uniforms
   - Tactical Footwear
 
-- **Units**
+- **Units** – see [Units](docs/classes/units.md)
   - K9
   - Special Operations Forces (SOF)
   - Two-man Patrols (Binomes)
 
-- **Fixed Assets**
+- **Fixed Assets** – see [Fixed Assets](docs/classes/fixed-assets.md)
   - Base Equipment
   - Communication Towers
   - Surveillance Cameras and Systems
   - Barriers and Fencing
   - Storage Facilities
 
-- **Personal Protective Equipment (PPE)**
+- **Personal Protective Equipment (PPE)** – see [PPE](docs/classes/ppe.md)
   - Helmets
   - Body Armor/Vests
   - Gloves
   - Boots
   - Eye Protection
   - Gas Masks
-
-## Getting Started
-
-Install dependencies
-
-    pip install -r requirements.txt
-
-Run
-
-    python main.py
 
 ## Endpoints
 
@@ -358,7 +353,7 @@ The API provides RESTful endpoints for managing assets and generating reports. E
 
 ### Data Structure File Organization
 
-```
+``` plain
 /data/
 ├── environment/
 │   └── environment_*.json
